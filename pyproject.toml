@@ -13,8 +13,10 @@ uvicorn = "^0.30.1"
 
 # Evitar bibliotecas externas 
 quantstats = "^0.0.62"
-ignr = "^2.2"
 gh = "^0.0.4"
+selenium = "^4.22.0"
+webdriver-manager = "^4.0.1"
+pydantic = "^2.8.2"
 [tool.pytest.ini_options]
 pythonpath = "."
 addopts = "-p no:warnings"
