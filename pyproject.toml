@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "investinsight"
+version = "0.1.0"
+description = ""
+authors = ["romilsonlonan <romilsonlonan@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12.*"
+fastapi = "^0.111.0"
+loguru = "^0.7.2"
+uvicorn = "^0.30.1"
+
+# Evitar bibliotecas externas 
+quantstats = "^0.0.62"
+ignr = "^2.2"
+[tool.pytest.ini_options]
+pythonpath = "."
+addopts = "-p no:warnings"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.5.0"
+
+# Comando pra criar um aliás:
+pytest = "^8.2.2"
+pytest-cov = "^5.0.0"
+
+[tool.taskipy.tasks]
+run = 'fastapi dev investinsight/app.py'
+pre_test = 'task lint'
+test = 'pytest --cov=panderaapi -vv'
+post_test = 'coverage html'
+lint = 'ruff check . ; ruff check . --diff'
+format = 'ruff check . --fix ; ruff format .'
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
